@@ -123,8 +123,21 @@ class _HomeSectionWidgetState extends State<HomeSectionWidget>
                     ),
                     TextSpan(
                       text: 'experiences for users!',
-                      style: TextStyle( 
-                        color: Color(0xFFFF8660),
+                      style: TextStyle(
+                        foreground: Paint()
+                          ..shader = LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            tileMode: TileMode
+                                .repeated, // تكرار التدرج للحصول على تأثير مموج
+                            colors: [
+                              Color(0xFFFF855F), // اللون البرتقالي
+                              Color(0xFF8000FE), // اللون الأرجواني
+                              Color(
+                                  0xFFFF855F), // إعادة اللون البرتقالي لتكرار الموجة
+                              Color(0xFF8000FE), // إعادة اللون الأرجواني
+                            ],
+                          ).createShader(Rect.fromLTWH(0.0, 0.0, 200, 100)),
                         fontSize: 30,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w800,
@@ -173,7 +186,7 @@ class _HomeSectionWidgetState extends State<HomeSectionWidget>
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50),
                     ),
-                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 16),
+                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 16),
                   ),
                   child: Text(
                     'Get In Touch',
@@ -196,7 +209,7 @@ class _HomeSectionWidgetState extends State<HomeSectionWidget>
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50),
                     ),
-                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 16),
+                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 16),
                   ),
                   child: Text(
                     'Download CV',

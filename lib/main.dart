@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
      debugShowCheckedModeBanner: false,
-      title: 'Mishal Touhri',
+      title:'Mishal Touhri',
       theme: ThemeData(
         brightness: Brightness.dark,
         primarySwatch: Colors.blue,
