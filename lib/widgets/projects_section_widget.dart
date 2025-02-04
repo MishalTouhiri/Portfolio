@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:mishal/Custom%20Widget/CustomCardWidget.dart';
-class ProjectsSectionWidget extends StatelessWidget {
 
+class ProjectsSectionWidget extends StatelessWidget {
   final List<Map<String, String>> projects = [
     {
       "title": "Project 1",
       "description": "This is a short description of project 1.",
-      "imageUrl": "images/m.jpg"  // تعديل الصورة من الإنترنت إلى صورة من الجهاز
+      "imageUrl": "images/m.jpg"
     },
     {
       "title": "Project 2",
       "description": "A brief description for project 2 that fits within the card.",
-      "imageUrl": "images/m.jpg"  // تعديل الصورة من الإنترنت إلى صورة من الجهاز
+      "imageUrl": "images/m.jpg"
     },
     {
       "title": "Project 3",
       "description": "A concise summary of project 3. Designed to stay within bounds.",
-      "imageUrl": "images/m.jpg"  // تعديل الصورة من الإنترنت إلى صورة من الجهاز
+      "imageUrl": "images/m.jpg"
     },
     {
       "title": "Project 4",
       "description": "Short project description to prevent overflow.",
-      "imageUrl": "images/m.jpg"  // تعديل الصورة من الإنترنت إلى صورة من الجهاز
+      "imageUrl": "images/m.jpg"
     },
   ];
 
@@ -29,14 +29,12 @@ class ProjectsSectionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     // تكبير الكروت في الكمبيوتر
-    double cardWidth = screenWidth > 900 ? screenWidth * 0.2 : screenWidth * 0.4;  // زيادة الحجم للكروت على الشاشات الكبيرة
-    double cardHeight = screenWidth > 900 ? 550 : 350;  // زيادة الارتفاع على الشاشات الكبيرة
-        double spacing = screenWidth > 600 ? 60 : 40;  // 60 للشاشات الكبيرة و 40 للشاشات الصغيرة
-
+    double cardWidth = screenWidth > 900 ? screenWidth * 0.2 : screenWidth * 0.4;
+    double cardHeight = screenWidth > 900 ? 550 : 350;
+    double spacing = screenWidth > 600 ? 60 : 40; // مسافة بين الكروت
 
     return Container(
       margin: EdgeInsets.only(top: 0),
-      
       child: Column(
         children: [
           LayoutBuilder(
@@ -168,21 +166,23 @@ class ProjectsSectionWidget extends StatelessWidget {
               bool isDesktop = constraints.maxWidth > 900;
 
               return isDesktop
-                  ? Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: projects.map((project) {
-                        return Padding(
-                          padding: EdgeInsets.only(right: spacing),
-                          child: CustomCardWidget(
+                  ? Padding(
+                      padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05), // توازن المسافة بين اليمين واليسار
+                      child: Wrap(
+                        spacing: spacing, // المسافة الأفقية بين الكروت
+                        runSpacing: spacing, // المسافة العمودية بين الكروت
+                        alignment: WrapAlignment.center, // توسيط العناصر
+                        children: projects.map((project) {
+                          return CustomCardWidget(
                             title: project['title']!,
                             description: project['description']!,
-                            imageUrl: project['imageUrl']!,  // استخدام الصورة من الجهاز
+                            imageUrl: project['imageUrl']!,
                             width: cardWidth,
                             height: cardHeight,
                             isFixedHeight: true,
-                          ),
-                        );
-                      }).toList(),
+                          );
+                        }).toList(),
+                      ),
                     )
                   : Column(
                       children: [
@@ -201,7 +201,7 @@ class ProjectsSectionWidget extends StatelessWidget {
                             return CustomCardWidget(
                               title: projects[index]['title']!,
                               description: projects[index]['description']!,
-                              imageUrl: projects[index]['imageUrl']!,  // استخدام الصورة من الجهاز
+                              imageUrl: projects[index]['imageUrl']!,
                               width: cardWidth,
                               height: cardHeight,
                               isFixedHeight: true,
