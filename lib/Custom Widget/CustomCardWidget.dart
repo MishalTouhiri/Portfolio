@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-
-class CustomCardWidget extends StatelessWidget {
+import 'package:flutter/material.dart';class CustomCardWidget extends StatelessWidget {
   final String title;
   final String description;
   final String imageUrl;
@@ -20,6 +18,11 @@ class CustomCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // تحديد حجم الصورة بناءً على حجم الشاشة
+    double imageHeight = MediaQuery.of(context).size.width > 900 
+        ? height * 0.5  // حجم الصورة 50% من ارتفاع الكرت للشاشات الكبيرة
+        : 200;  // حجم ثابت للصورة على الشاشات الصغيرة
+
     return Container(
       width: width, // عرض الكرت يأتي من الخارج
       height: isFixedHeight ? height : null, // استخدام الثابت إذا كان مخصصًا
@@ -44,7 +47,7 @@ class CustomCardWidget extends StatelessWidget {
         children: [
           Container(
             width: double.infinity,
-            height: isFixedHeight ? (height * 0.5) : 200, // يضبط الصورة بناءً على الحجم
+            height: imageHeight, // ضبط حجم الصورة بناءً على الحجم المخصص
             decoration: ShapeDecoration(
               image: DecorationImage(
                 image: NetworkImage(imageUrl),

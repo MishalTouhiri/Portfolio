@@ -161,7 +161,7 @@ class ProjectsSectionWidget extends StatelessWidget {
             },
           ),
 
-          SizedBox(height: 30),
+          SizedBox(height: 50),
 
           LayoutBuilder(
             builder: (context, constraints) {
@@ -186,7 +186,7 @@ class ProjectsSectionWidget extends StatelessWidget {
                     )
                   : Column(
                       children: [
-                        SizedBox(height: 20),
+                        SizedBox(height: 50),
                         GridView.builder(
                           shrinkWrap: true,
                           physics: NeverScrollableScrollPhysics(),

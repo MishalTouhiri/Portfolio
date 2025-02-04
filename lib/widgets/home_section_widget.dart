@@ -262,9 +262,9 @@ class _HomeSectionWidgetState extends State<HomeSectionWidget>
               ),
             ],
           ),
+          SizedBox(height: 100),
         ],
       ),
     );
-  
   }
 }
