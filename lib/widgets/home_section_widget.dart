@@ -265,5 +265,6 @@ class _HomeSectionWidgetState extends State<HomeSectionWidget>
         ],
       ),
     );
+  
   }
 }

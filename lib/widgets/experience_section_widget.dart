@@ -7,7 +7,7 @@ class ExperienceSectionWidget extends StatelessWidget {
 
     return Container(
       margin: EdgeInsets.only(top: 0),
-      height: 250,
+      height: 550,
       child: LayoutBuilder(
         builder: (context, constraints) {
           bool isDesktop = constraints.maxWidth > 600;
