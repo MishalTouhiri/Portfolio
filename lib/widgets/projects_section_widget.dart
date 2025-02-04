@@ -29,8 +29,8 @@ class ProjectsSectionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     // تكبير الكروت في الكمبيوتر
-    double cardWidth = screenWidth > 900 ? screenWidth * 0.18 : screenWidth * 0.35;  // زيادة الحجم للكروت على الشاشات الكبيرة
-    double cardHeight = screenWidth > 900 ? 450 : 280;  // زيادة الارتفاع على الشاشات الكبيرة
+    double cardWidth = screenWidth > 900 ? screenWidth * 0.2 : screenWidth * 0.4;  // زيادة الحجم للكروت على الشاشات الكبيرة
+    double cardHeight = screenWidth > 900 ? 550 : 350;  // زيادة الارتفاع على الشاشات الكبيرة
         double spacing = screenWidth > 600 ? 60 : 40;  // 60 للشاشات الكبيرة و 40 للشاشات الصغيرة
 
 
