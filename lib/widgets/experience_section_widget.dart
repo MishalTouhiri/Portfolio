@@ -32,7 +32,7 @@ class ExperienceSectionWidget extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     double cardWidth =
         screenWidth > 900 ? screenWidth * 0.2 : screenWidth * 0.4;
-    double cardHeight = screenWidth > 900 ? 550 : 350;
+    double cardHeight = screenWidth > 900 ? 450 : 300;
     double spacing = screenWidth > 600 ? 60 : 40;
 
     return Container(

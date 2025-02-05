@@ -27,8 +27,8 @@ class InfoCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double imageHeight = MediaQuery.of(context).size.width > 900
-        ? height * 0.3
-        : 80;
+        ? height * 0.2
+        : 60;
 
     return Container(
       width: width,
