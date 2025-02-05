@@ -179,7 +179,7 @@ class ProjectsSectionWidget extends StatelessWidget {
                             imageUrl: project['imageUrl']!,
                             width: cardWidth,
                             height: cardHeight,
-                            isFixedHeight: true,
+                          isFixedHeight: true,
                           );
                         }).toList(),
                       ),
@@ -187,31 +187,35 @@ class ProjectsSectionWidget extends StatelessWidget {
                   : Column(
                       children: [
                         SizedBox(height: 50),
-                        GridView.builder(
-                          shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
-                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: screenWidth < 500 ? 1 : 2,
-                            crossAxisSpacing: spacing,
-                            mainAxisSpacing: spacing,
-                            childAspectRatio: cardWidth / cardHeight,
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05), // إضافة مسافة في الجوال
+                          child: GridView.builder(
+                            shrinkWrap: true,
+                            physics: NeverScrollableScrollPhysics(),
+                            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: screenWidth < 500 ? 1 : 2,
+                              crossAxisSpacing: spacing,
+                              mainAxisSpacing: spacing,
+                              childAspectRatio: cardWidth / cardHeight,
+                            ),
+                            itemCount: projects.length,
+                            itemBuilder: (context, index) {
+                              return CustomCardWidget(
+                                title: projects[index]['title']!,
+                                description: projects[index]['description']!,
+                                imageUrl: projects[index]['imageUrl']!,
+                                width: cardWidth,
+                                height: cardHeight,
+                                isFixedHeight: true,
+                              );
+                            },
                           ),
-                          itemCount: projects.length,
-                          itemBuilder: (context, index) {
-                            return CustomCardWidget(
-                              title: projects[index]['title']!,
-                              description: projects[index]['description']!,
-                              imageUrl: projects[index]['imageUrl']!,
-                              width: cardWidth,
-                              height: cardHeight,
-                              isFixedHeight: true,
-                            );
-                          },
                         ),
                       ],
                     );
+                    
             },
-          ),
+          ),SizedBox(height: 50),
         ],
       ),
     );

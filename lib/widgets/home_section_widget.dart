@@ -106,7 +106,7 @@ class _HomeSectionWidgetState extends State<HomeSectionWidget>
           FadeTransition(
             opacity: _fadeAnimation,
             child: SizedBox(
-              width: MediaQuery.of(context).size.width * 0.8,
+              width: screenWidth * 0.8,
               child: Text.rich(
                 TextSpan(
                   children: [
@@ -128,14 +128,12 @@ class _HomeSectionWidgetState extends State<HomeSectionWidget>
                           ..shader = LinearGradient(
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
-                            tileMode: TileMode
-                                .repeated, // تكرار التدرج للحصول على تأثير مموج
+                            tileMode: TileMode.repeated,
                             colors: [
-                              Color(0xFFFF855F), // اللون البرتقالي
-                              Color(0xFF8000FE), // اللون الأرجواني
-                              Color(
-                                  0xFFFF855F), // إعادة اللون البرتقالي لتكرار الموجة
-                              Color(0xFF8000FE), // إعادة اللون الأرجواني
+                              Color(0xFFFF855F),
+                              Color(0xFF8000FE),
+                              Color(0xFFFF855F),
+                              Color(0xFF8000FE),
                             ],
                           ).createShader(Rect.fromLTWH(0.0, 0.0, 200, 100)),
                         fontSize: 30,
@@ -154,11 +152,11 @@ class _HomeSectionWidgetState extends State<HomeSectionWidget>
           FadeTransition(
             opacity: _fadeAnimation,
             child: SizedBox(
-              width: MediaQuery.of(context).size.width * 0.8,
+              width: screenWidth * 0.8,
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Text(
-                  'I am a creative professional specializing in strategy, branding, and UI/UX design. I help businesses define their direction, craft compelling brand identities, and design user-friendly interfaces to enhance user satisfaction and engagement.',
+                  'I am a creative professional specializing in strategy, branding, and UI/UX design.',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
@@ -172,97 +170,100 @@ class _HomeSectionWidgetState extends State<HomeSectionWidget>
             ),
           ),
           const SizedBox(height: 40),
+
+          // ----------------------- إضافة كلمة "Skills" -----------------------
           FadeTransition(
             opacity: _fadeAnimation,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+            child: Column(
               children: [
-                ElevatedButton(
-                  onPressed: () {
-                    print("Navigating to Get In Touch Page");
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50),
-                    ),
-                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 16),
-                  ),
-                  child: Text(
-                    'Get In Touch',
-                    style: TextStyle(
-                      color: Color(0xFF161513),
-                      fontSize: 18,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w600,
-                    ),
+                Text(
+                  'Skills', // تم إضافة العنوان هنا
+                  style: TextStyle(
+                    color: Color(0xFFC4C4C4),
+                    fontSize: 30,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 2.5,
                   ),
                 ),
-                SizedBox(width: 20),
-                ElevatedButton(
-                  onPressed: () {
-                    print("Navigating to Download CV");
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.transparent,
-                    side: BorderSide(width: 2, color: Colors.white),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50),
+                SizedBox(height: 20),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1), // مسافة من الحواف
+                  child: GridView.builder(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: crossAxisCount,
+                      crossAxisSpacing: 30, // تقليل المسافة الأفقية
+                      mainAxisSpacing: 30,  // تقليل المسافة العمودية
+                      childAspectRatio: 1,
                     ),
-                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 16),
-                  ),
-                  child: Text(
-                    'Download CV',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w600,
-                    ),
+                    itemCount: skillsIcons.length,
+                    itemBuilder: (context, index) {
+                      return Center(
+                        child: Icon(
+                          skillsIcons[index],
+                          size: 35, // تصغير الأيقونات
+                          color: Color(0xFFC4C4C4),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ],
             ),
           ),
           const SizedBox(height: 40),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                'Skills',
-                style: TextStyle(
-                  color: Color(0xFFC4C4C4),
-                  fontSize: 30,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w600,
-                  letterSpacing: 2.5,
+              ElevatedButton(
+                onPressed: () {
+                  print("Navigating to Get In Touch Page");
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 16),
+                ),
+                child: Text(
+                  'Get In Touch',
+                  style: TextStyle(
+                    color: Color(0xFF161513),
+                    fontSize: 18,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
-              SizedBox(height: 20),
-              FadeTransition(
-                opacity: _fadeAnimation,
-                child: GridView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: crossAxisCount,
-                    crossAxisSpacing: 100,
-                    mainAxisSpacing: 100,
-                    childAspectRatio: 1,
+              SizedBox(width: 20),
+              ElevatedButton(
+                onPressed: () {
+                  print("Navigating to Download CV");
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.transparent,
+                  side: BorderSide(width: 2, color: Colors.white),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50),
                   ),
-                  itemCount: skillsIcons.length,
-                  itemBuilder: (context, index) {
-                    return Icon(
-                      skillsIcons[index],
-                      size: 40,
-                      color: Color(0xFFC4C4C4),
-                    );
-                  },
+                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 16),
+                ),
+                child: Text(
+                  'Download CV',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
             ],
           ),
-          SizedBox(height: 100),
+          const SizedBox(height: 100),
         ],
       ),
     );
