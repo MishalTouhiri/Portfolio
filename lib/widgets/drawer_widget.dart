@@ -33,6 +33,33 @@ class DrawerWidget extends StatelessWidget {
                         padding: EdgeInsets.only(top: 16.0),
                         child: Column(
                           children: [
+                            // زر الإغلاق
+                            Align(
+                              alignment: Alignment.topRight,
+                              child: GestureDetector(
+                                onTap: () {
+                                  // إغلاق السحب أو إغلاق الصفحة
+                                  Navigator.of(context).pop();  // لإغلاق الـDrawer
+                                },
+                                child: Container(
+                                  width: 30,
+                                  height: 30,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    border: Border.all(
+                                      color: Colors.white,  // اللون الأبيض للإطار
+                                      width: 2,  // سمك الإطار
+                                    ),
+                                  ),
+                                  child: Icon(
+                                    Icons.close,
+                                    color: Colors.white,
+                                    size: 18,  // حجم الأيقونة
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 10),
                             // الصورة مع الحواف بتدرج لوني
                             Container(
                               width: 100, // تحديد الحجم
