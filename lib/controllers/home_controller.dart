@@ -1,28 +1,42 @@
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
-  final ScrollController scrollController = ScrollController();
+  late ScrollController scrollController;
+
+  final Map<String, GlobalKey> sectionKeys = {
+    'home': GlobalKey(),
+    'projects': GlobalKey(),
+    'experience': GlobalKey(),
+    'contact': GlobalKey(),
+  };
+
+  @override
+  void onInit() {
+    super.onInit();
+    scrollController = ScrollController();
+  }
 
   void scrollTo(String section) {
-    double offset = 0;
-    switch (section) {
-      case 'projects':
-        offset = 600;
-        break;
-      case 'experience':
-        offset = 1200;
-        break;
-      case 'contact':
-        offset = 1800;
-        break;
-      default:
-        offset = 0;
-    }
-    scrollController.animateTo(
-      offset,
-      duration: Duration(milliseconds: 500),
-      curve: Curves.easeInOut,
-    );
+    if (!scrollController.hasClients) return;
+
+    final key = sectionKeys[section];
+    if (key == null || key.currentContext == null) return;
+
+    // ✅ يضمن أن التمرير يحدث فقط بعد اكتمال بناء الواجهة
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      Scrollable.ensureVisible(
+        key.currentContext!,
+        duration: Duration(milliseconds: 600),
+        curve: Curves.easeInOut,
+      );
+    });
+  }
+
+  @override
+  void onClose() {
+    scrollController.dispose();
+    super.onClose();
   }
 }
