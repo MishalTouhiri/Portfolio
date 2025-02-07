@@ -1,0 +1,10 @@
+C:/Developer/flutter-apps/mishal/build/windows/x64/CMakeFiles/INSTALL.dir
+C:/Developer/flutter-apps/mishal/build/windows/x64/CMakeFiles/ALL_BUILD.dir
+C:/Developer/flutter-apps/mishal/build/windows/x64/CMakeFiles/ZERO_CHECK.dir
+C:/Developer/flutter-apps/mishal/build/windows/x64/flutter/CMakeFiles/flutter_wrapper_plugin.dir
+C:/Developer/flutter-apps/mishal/build/windows/x64/flutter/CMakeFiles/flutter_wrapper_app.dir
+C:/Developer/flutter-apps/mishal/build/windows/x64/flutter/CMakeFiles/flutter_assemble.dir
+C:/Developer/flutter-apps/mishal/build/windows/x64/flutter/CMakeFiles/INSTALL.dir
+C:/Developer/flutter-apps/mishal/build/windows/x64/runner/CMakeFiles/mishal.dir
+C:/Developer/flutter-apps/mishal/build/windows/x64/runner/CMakeFiles/INSTALL.dir
+C:/Developer/flutter-apps/mishal/build/windows/x64/runner/CMakeFiles/ALL_BUILD.dir
